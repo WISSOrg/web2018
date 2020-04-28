@@ -30,3 +30,19 @@ for sub_page in sub_pages:
     html = html.replace("\n0\n", "")
     html = re.sub("[a-f0-9]+(\r)*\n\<", "<", html)
     open(path, 'w').write(html)
+
+# ---
+
+need_fix_pages = [
+    "call-for-participants/challenge",
+    "call-for-participants/design-competition",
+    "call-for-participants/sponsorship",
+    "call-for-participants/student_volunteer",
+    "call-for-participants/web-design",
+]
+
+for sub_page in need_fix_pages:
+    path = "./docs/" + sub_page + "/index.html"
+    html = open(path).read()
+    html = html.replace("../", "../../")
+    open(path, 'w').write(html)
